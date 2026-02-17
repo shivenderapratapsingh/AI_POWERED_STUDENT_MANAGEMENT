@@ -1,0 +1,4 @@
+favicorn
+uvicorn
+textblob
+pydantic
