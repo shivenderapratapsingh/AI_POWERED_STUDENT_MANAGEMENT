@@ -134,3 +134,7 @@ def  smart_searching(query:str):
         "Count":len(result),
         "Searched":result
     }
+
+
+#staging area : like a prepration stage
+#git add . ->it intialize staging area
