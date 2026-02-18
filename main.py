@@ -79,10 +79,6 @@ def filter_students(course: Optional[str]=None):
         s for s in students
         if s.course.lower()==course.lower()
     ]
-    print("Start")
-    for s in students:
-        print(type(s))
-
 
     return {
         "count":len(filtered),
