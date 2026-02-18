@@ -41,8 +41,7 @@ def get_student(student_id:int):
 
 
 @app.put("/students/{student_id}")
-def update_student(student_id:int,name:str,updated_student:Student):
-    print(name)
+def update_student(student_id:int,updated_student:Student):
     if student_id < 0 or student_id >= len(students):
         raise HTTPException(
             status_code=404,
