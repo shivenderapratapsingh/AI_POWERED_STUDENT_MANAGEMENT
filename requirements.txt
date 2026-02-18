@@ -2,3 +2,4 @@ favicorn
 uvicorn
 textblob
 pydantic
+pytest
