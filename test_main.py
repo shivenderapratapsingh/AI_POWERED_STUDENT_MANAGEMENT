@@ -5,13 +5,15 @@ from main import app
 #to be reused again and again for testing
 @pytest.fixture
 def client():
-    # create a Testcli
     return TestClient(app) #we are passing object of Fastapi
 
 #dependency injection :-we prepared it outside and used to inside some function just like client we defined outside then it injected in test case
 @pytest.fixture
 def post_sample_data():
     return [{"name":"billu","age":22,"email":"billu@gamil.com","course":"Chemistry"},{"name":"shivaay","age":33,"email":"shiva@gmail.com","course":"english"}]
+@pytest.fixture
+def post_checkupdate_data():
+    return []
 
 def test_home(client): #they will 
     response=client.get("/")
@@ -45,13 +47,16 @@ def test_update_students(client, post_sample_data):
     assert respose.json()["data"]==post_sample_data[1]
 
 
+
+def test_filter_data(client,post_sample_data):
+    response=client.get("/filter",params={"course":"english"})
+    assert response.status_code == 200
+    assert response.json()["data"][0]==post_sample_data[1]
+     
 def test_delete_student(client, post_sample_data):
     response=client.delete("/students/0")
     assert response.json()["message"]=="Student deleted successfully"
     assert response.json()["data"]==post_sample_data[1]
-
-     
-
 
 
 #pytest writing test cases assertion 
